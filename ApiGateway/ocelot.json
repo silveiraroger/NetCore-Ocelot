@@ -17,50 +17,109 @@
 
     {
       "ServiceName": "",
-      "DownstreamPathTemplate": "/api/books/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/autenticacao/login",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "book-service",
-          "Port": 9001
+          "Host": "localhost",
+          "Port": 49155
         }
       ],
-      "UpstreamPathTemplate": "/api/v1/books/{id}/details",
+      "UpstreamPathTemplate": "/api/v1/autenticacao/login",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Key": "Login"
+    },
+
+    //Pedidos
+    {
+      "ServiceName": "",
+      "DownstreamPathTemplate": "/api/v1/pedidos/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 49157
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/pedidos/{id}/detalhes",
       "UpstreamHttpMethod": [ "Get" ],
-      "Priority": 2,
-      "Key": "Book"
+      "Key": "PedidosDetalhes"
     },
 
     {
       "ServiceName": "",
-      "DownstreamPathTemplate": "/api/booksprices/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/v1/pedidos",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "pricing-service",
-          "Port": 9002
+          "Host": "localhost",
+          "Port": 49157
         }
       ],
-      "UpstreamPathTemplate": "/api/v1/books/{id}/price",
+      "UpstreamPathTemplate": "/api/v1/pedidos",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "Key": "Pedidos"
+    },
+
+    //Produtos
+    {
+      "ServiceName": "",
+      "DownstreamPathTemplate": "/api/v1/produtos/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 49159
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/produtos/{id}/detalhes",
       "UpstreamHttpMethod": [ "Get" ],
       "Priority": 1,
-      "Key": "BookPrice"
+      "Key": "ProdutosDetalhes"
     },
 
     {
       "ServiceName": "",
-      "DownstreamPathTemplate": "/api/booksratings/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/v1/produtos",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "rating-service",
-          "Port": 9003
+          "Host": "localhost",
+          "Port": 49159
         }
       ],
-      "UpstreamPathTemplate": "/api/v1/books/{id}/ratings",
+      "UpstreamPathTemplate": "/api/v1/produtos",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "Key": "Produtos"
+    },
+
+    //Produtos Preço
+    {
+      "ServiceName": "",
+      "DownstreamPathTemplate": "/api/v1/produtospreco/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 49153
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/produtos-preco/{id}/detalhes",
       "UpstreamHttpMethod": [ "Get" ],
       "Priority": 0,
-      "Key": "BookRating"
+      "Key": "ProdutosPrecoDetalhes"
+    }
+
+  ],
+
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "ProdutosDetalhes",
+        "ProdutosPrecoDetalhes"
+      ],
+      "UpstreamPathTemplate": "/api/v1/produtos/{id}/detalhes-agragacao",
+      "Aggregator": "ProdutoDetalhesAggregator"
     }
   ]
 }
