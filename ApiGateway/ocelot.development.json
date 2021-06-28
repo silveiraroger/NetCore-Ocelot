@@ -1,0 +1,125 @@
+{
+  "GlobalConfiguration": {},
+  "Routes": [
+    {
+      "ServiceName": "",
+      "DownstreamPathTemplate": "/users",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "jsonplaceholder.typicode.com",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/metadata/users",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+
+    {
+      "ServiceName": "",
+      "DownstreamPathTemplate": "/api/autenticacao/login",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 49155
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/autenticacao/login",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Key": "Login"
+    },
+
+    //Pedidos
+    {
+      "ServiceName": "",
+      "DownstreamPathTemplate": "/api/v1/pedidos/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 49157
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/pedidos/{id}/detalhes",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "PedidosDetalhes"
+    },
+
+    {
+      "ServiceName": "",
+      "DownstreamPathTemplate": "/api/v1/pedidos",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 49157
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/pedidos",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "Key": "Pedidos"
+    },
+
+    //Produtos
+    {
+      "ServiceName": "",
+      "DownstreamPathTemplate": "/api/v1/produtos/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 49159
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/produtos/{id}/detalhes",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Priority": 1,
+      "Key": "ProdutosDetalhes"
+    },
+
+    {
+      "ServiceName": "",
+      "DownstreamPathTemplate": "/api/v1/produtos",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 49159
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/produtos",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "Key": "Produtos"
+    },
+
+    //Produtos Preço
+    {
+      "ServiceName": "",
+      "DownstreamPathTemplate": "/api/v1/produtospreco/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 49153
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/produtos-preco/{id}/detalhes",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Priority": 0,
+      "Key": "ProdutosPrecoDetalhes"
+    }
+
+  ],
+
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "ProdutosDetalhes",
+        "ProdutosPrecoDetalhes"
+      ],
+      "UpstreamPathTemplate": "/api/v1/produtos/{id}/detalhes-agragacao",
+      "Aggregator": "ProdutoDetalhesAggregator"
+    }
+  ]
+}
