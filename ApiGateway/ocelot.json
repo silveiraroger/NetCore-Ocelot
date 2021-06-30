@@ -22,7 +22,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 49155
+          "Port": 49165
         }
       ],
       "UpstreamPathTemplate": "/api/v1/autenticacao/login",
@@ -38,12 +38,16 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 49157
+          "Port": 49161
         }
       ],
       "UpstreamPathTemplate": "/api/v1/pedidos/{id}/detalhes",
       "UpstreamHttpMethod": [ "Get" ],
-      "Key": "PedidosDetalhes"
+      "Key": "PedidosDetalhes",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     },
 
     {
@@ -53,12 +57,16 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 49157
+          "Port": 49161
         }
       ],
       "UpstreamPathTemplate": "/api/v1/pedidos",
       "UpstreamHttpMethod": [ "Get", "Post" ],
-      "Key": "Pedidos"
+      "Key": "Pedidos",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     },
 
     //Produtos
@@ -69,13 +77,17 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 49159
+          "Port": 49163
         }
       ],
       "UpstreamPathTemplate": "/api/v1/produtos/{id}/detalhes",
       "UpstreamHttpMethod": [ "Get" ],
       "Priority": 1,
-      "Key": "ProdutosDetalhes"
+      "Key": "ProdutosDetalhes",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     },
 
     {
@@ -85,12 +97,16 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 49159
+          "Port": 49163
         }
       ],
       "UpstreamPathTemplate": "/api/v1/produtos",
       "UpstreamHttpMethod": [ "Get", "Post" ],
-      "Key": "Produtos"
+      "Key": "Produtos",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     },
 
     //Produtos Preço
@@ -101,13 +117,17 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 49153
+          "Port": 49167
         }
       ],
       "UpstreamPathTemplate": "/api/v1/produtos-preco/{id}/detalhes",
       "UpstreamHttpMethod": [ "Get" ],
       "Priority": 0,
-      "Key": "ProdutosPrecoDetalhes"
+      "Key": "ProdutosPrecoDetalhes",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     }
 
   ],

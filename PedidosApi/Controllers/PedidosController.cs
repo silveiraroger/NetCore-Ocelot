@@ -7,7 +7,6 @@ using System.Linq;
 
 namespace PedidosApi.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/v1/[controller]")]
     public class PedidosController : ControllerBase
