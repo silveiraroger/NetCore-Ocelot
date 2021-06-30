@@ -22,7 +22,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 49165
+          "Port": 49183
         }
       ],
       "UpstreamPathTemplate": "/api/v1/autenticacao/login",
@@ -38,7 +38,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 49161
+          "Port": 49179
         }
       ],
       "UpstreamPathTemplate": "/api/v1/pedidos/{id}/detalhes",
@@ -46,8 +46,8 @@
       "Key": "PedidosDetalhes",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": [] 
-      } 
+        "AllowedScopes": []
+      }
     },
 
     {
@@ -57,7 +57,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 49161
+          "Port": 49179
         }
       ],
       "UpstreamPathTemplate": "/api/v1/pedidos",
@@ -78,7 +78,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 49163
+          "Port": 49177
         }
       ],
       "UpstreamPathTemplate": "/api/v1/produtos/{id}/detalhes",
@@ -98,7 +98,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 49163
+          "Port": 49177
         }
       ],
       "UpstreamPathTemplate": "/api/v1/produtos",
@@ -119,7 +119,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 49167
+          "Port": 49181
         }
       ],
       "UpstreamPathTemplate": "/api/v1/produtos-preco/{id}/detalhes",
@@ -134,14 +134,14 @@
 
   ],
 
-  "SwaggerEndPoint": [
+  "SwaggerEndPoints": [
     {
       "Key": "Pedidos",
       "Config": [
         {
           "Name": "Api Pedidos",
           "Version": "v1",
-          "Url": "https://localhost:49161/swagger/v1/swagger.json"
+          "Url": "https://localhost:49179/swagger/v1/swagger.json"
         }
       ]
     },
@@ -149,9 +149,9 @@
       "Key": "Produtos",
       "Config": [
         {
-          "Name": "Api Pedidos",
+          "Name": "Api Produtos",
           "Version": "v1",
-          "Url": "https://localhost:49163/swagger/v1/swagger.json"
+          "Url": "https://localhost:49177/swagger/v1/swagger.json"
         }
       ]
     }
